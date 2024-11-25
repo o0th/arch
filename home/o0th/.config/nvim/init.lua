@@ -4,6 +4,7 @@ vim.opt.clipboard:append("unnamedplus")
 vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.smartindent = true
+vim.opt.signcolumn = 'yes'
 
 vim.wo.number = true
 
