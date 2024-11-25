@@ -1,1 +1,10 @@
 require("config.lazy")
+
+vim.opt.clipboard:append("unnamedplus")
+vim.opt.swapfile = false
+vim.opt.undofile = true
+vim.opt.smartindent = true
+
+vim.wo.number = true
+
+vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
