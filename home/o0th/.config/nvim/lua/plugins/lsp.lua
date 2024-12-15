@@ -13,19 +13,43 @@ return {
     dependencies = {
       { 'hrsh7th/cmp-cmdline' },
       { 'hrsh7th/cmp-buffer' },
+      { 'L3MON4D3/LuaSnip' },
+      { 'saadparwaiz1/cmp_luasnip' },
     },
     config = function()
+      local luasnip = require("luasnip")
+      luasnip.setup({})
+      local s = luasnip.snippet
+      local t = luasnip.text_node
+      luasnip.add_snippets("all", {
+        s("asdomare", {
+          t("asdomare semper domina")
+        })
+      }, { ksey = "all" })
       local cmp = require('cmp')
       cmp.setup({
         sources = {
           { name = 'nvim_lsp' },
           { name = 'buffer' },
+          { name = 'luasnip' }
         },
         mapping = cmp.mapping.preset.insert({
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-u>'] = cmp.mapping.scroll_docs(-4),
           ['<C-d>'] = cmp.mapping.scroll_docs(4),
-          ["<CR>"] = cmp.mapping(cmp.mapping.confirm { select = false }, { "i", "c" }),
+          ['<CR>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              if luasnip.expandable() then
+                luasnip.expand()
+              else
+                cmp.confirm({
+                  select = false,
+                }, { "i", "c" })
+              end
+            else
+              fallback()
+            end
+          end),
           ["<Tab>"] = cmp.mapping(function(fallback)
             if is_visible(cmp) then
               cmp.select_next_item()
@@ -49,7 +73,7 @@ return {
         }),
         snippet = {
           expand = function(args)
-            vim.snippet.expand(args.body)
+            luasnip.lsp_expand(args.body)
           end,
         },
       })
@@ -162,6 +186,10 @@ return {
         }
       })
 
+      require('lspconfig').zls.setup({})
+      require('lspconfig').ts_ls.setup({})
+      require('lspconfig').terraformls.setup({})
+
       local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
       for type, icon in pairs(signs) do
         local hl = "DiagnosticSign" .. type
@@ -198,9 +226,5 @@ return {
         end
       })
     end
-  },
-  {
-    "L3MON4D3/LuaSnip",
-    lazy = true,
   }
 }
