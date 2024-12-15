@@ -10,6 +10,7 @@ if status is-interactive
 
 	# Start starship
 	starship init fish | source
+	fnm env | source
 
 	# Path
 	fish_add_path ~/.cargo/bin
