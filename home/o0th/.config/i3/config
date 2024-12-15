@@ -23,7 +23,8 @@ workspace_layout default
 ##############################
 
 #border indicator on windows:
-new_window pixel 1
+new_window pixel 2
+for_window [class=".*"] border pixel 2
 
 # thin borders
 # hide_edge_borders both
@@ -148,9 +149,9 @@ bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
 
 # Lock the system
 # lock with a picture:
-#bindsym $mod+l exec --no-startup-id i3lock -i  ~/.config/i3/i3-lock-screen.png -p default|win -t
+bindsym $mod+Escape exec --no-startup-id i3lock -i /home/o0th/Wallpapers/woods_blur.png -p default|win -t
 # lock by blurring the screen:
-bindsym $mod+Escape exec --no-startup-id ~/.config/i3/scripts/blur-lock
+# bindsym $mod+Escape exec --no-startup-id ~/.config/i3/scripts/blur-lock
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -362,7 +363,7 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
-exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
+exec --no-startup-id sleep 1 && feh --bg-fill /home/o0th/Wallpapers/woods.jpg
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
@@ -431,6 +432,8 @@ for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
 for_window [class="Pamac-manager"] floating enable
 for_window [window_role="About"] floating enable
+for_window [class="Shutter"] floating enable
+for_window [class="Shutter"] move position center
 
 # set border of floating window
 for_window [class="urxvt"] border pixel 1
