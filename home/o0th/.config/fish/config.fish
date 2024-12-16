@@ -8,9 +8,14 @@ if status is-interactive
 	# Remove greeting message
 	set -U fish_greeting
 
-	# Start starship
+	# Source starship
 	starship init fish | source
+
+	# Source fnm
 	fnm env | source
+
+	# vi mode
+	fish_vi_key_bindings
 
 	# Path
 	fish_add_path ~/.cargo/bin
