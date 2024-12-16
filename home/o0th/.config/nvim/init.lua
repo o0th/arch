@@ -5,6 +5,7 @@ vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.smartindent = true
 vim.opt.signcolumn = 'yes'
+vim.opt.scrolloff = 10
 
 vim.wo.number = true
 
