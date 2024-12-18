@@ -11,6 +11,10 @@ if status is-interactive
 	# Source starship
 	starship init fish | source
 
+	# Source zoxide
+	zoxide init fish | source
+	alias cd='z'
+
 	# Source fnm
 	fnm env | source
 
