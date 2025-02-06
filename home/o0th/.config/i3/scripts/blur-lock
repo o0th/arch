@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+PICTURE=/home/o0th/Wallpapers/woods.png
+
+BLUR="5x4"
+
+convert $PICTURE -blur $BLUR $PICTURE
+i3lock -i $PICTURE

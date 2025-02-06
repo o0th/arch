@@ -18,6 +18,18 @@ workspace_layout default
 # Each new window will open fullscreen as a tab (left to right)
 #workspace_layout tabbed
 
+
+##############################
+# fake-outputs               #
+##############################
+
+# fake-outputs 1600x1440+0+0,1920x1440+1600+0,1600x1440+3520+0
+# fake-outputs 1280x1440+0+0,2560x1440+1280+0,1280x1440+3840+0
+#
+# workspace 8 output fake-0
+# workspace $ws1 output fake-1
+# workspace 9 output fake-2
+
 ##############################
 # extra options for windows: #
 ##############################
@@ -254,7 +266,7 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym $mod+p exec --no-startup-id /usr/local/bin/switch-audio-port
 
 ## App shortcuts
-bindsym $mod+w exec --no-startup-id /usr/bin/firefox
+# bindsym $mod+w exec --no-startup-id /usr/bin/firefox
 bindsym $mod+n exec --no-startup-id /usr/bin/thunar
 bindsym Print exec --no-startup-id scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
