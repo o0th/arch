@@ -32,12 +32,14 @@ return {
         hl = { fg = "fg", bg = "bg" },
         lib.component.mode(),
         lib.component.git_branch(),
+        lib.component.git_diff(),
         file_info(),
-        lib.component.diagnostics(),
         lib.component.fill(),
         lib.component.fill(),
-        lib.component.treesitter(),
         lib.component.lsp(),
+        lib.component.diagnostics(),
+        lib.component.treesitter(),
+        lib.component.nav(),
         lib.component.mode { surround = { separator = "right" } },
       }
     })

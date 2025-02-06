@@ -7,8 +7,38 @@ return {
 
     lspconfig.lua_ls.setup({ capabilities = capabilities })
     lspconfig.zls.setup({ capabilities = capabilities })
-    lspconfig.ts_ls.setup({ capabilities = capabilities })
     lspconfig.terraformls.setup({ capabilities = capabilities })
+    lspconfig.jsonls.setup({ capabilities = capabilities })
+    lspconfig.gopls.setup({ capabilities = capabilities })
+    lspconfig.helm_ls.setup({ capabilities = capabilities })
+
+    lspconfig.yamlls.setup({
+      capabilities = capabilities,
+      settings = {
+        yaml = {
+          schemas = {
+            ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/refs/heads/master/v1.32.1-standalone-strict/all.json"] =
+            "/*.k8s.yaml",
+          },
+          format = {
+            enable = true
+          },
+          validate = false
+        },
+      },
+    })
+
+    lspconfig.ts_ls.setup({
+      capabilities = capabilities,
+      init_options = {
+        preferences = {
+          disableSuggestions = true }
+      }
+    })
+
+    lspconfig.eslint.setup({
+      capabilities = capabilities
+    })
 
     local buffer_autoformat = function(bufnr)
       local group = 'lsp_autoformat'

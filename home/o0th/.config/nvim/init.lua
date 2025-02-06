@@ -6,6 +6,9 @@ vim.opt.undofile = true
 vim.opt.signcolumn = 'yes'
 vim.opt.scrolloff = 10
 vim.opt.autoindent = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+
 vim.wo.number = true
 
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true })

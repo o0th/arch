@@ -13,7 +13,7 @@ return {
     local telescope = require('telescope')
     telescope.setup({
       pickers = {
-        find_files = { theme = 'ivy' },
+        find_files = { theme = 'ivy', hidden = true, no_ignore = true },
         git_files = { theme = 'ivy' },
         live_grep = { theme = 'ivy' },
         buffers = { theme = 'ivy' },

@@ -3,14 +3,13 @@ return {
   -- optional: provides snippets for the snippet source
   dependencies = {
     { 'rafamadriz/friendly-snippets' },
-    { 'giuxtaposition/blink-cmp-copilot' },
+    { 'xzbdmw/colorful-menu.nvim' }
   },
 
   -- use a release tag to download pre-built binaries
   version = 'v0.*',
   -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-  -- build = 'cargo build --release',
-  -- If you use nix, you can build from source using latest nightly rust with:
+  -- build = 'cargo build --release', If you use nix, you can build from source using latest nightly rust with:
   -- build = 'nix run .#build-plugin',
 
   ---@module 'blink.cmp'
@@ -70,24 +69,7 @@ return {
     -- default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, via `opts_extend`
     sources = {
-      providers = {
-        copilot = {
-          name = 'copilot',
-          module = 'blink-cmp-copilot',
-          score_offset = 100,
-          async = true,
-          transform_items = function(_, items)
-            local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
-            local kind_idx = #CompletionItemKind + 1
-            CompletionItemKind[kind_idx] = "Copilot"
-            for _, item in ipairs(items) do
-              item.kind = kind_idx
-            end
-            return items
-          end,
-        }
-      },
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
       -- optionally disable cmdline completions
       -- cmdline = {},
     },
