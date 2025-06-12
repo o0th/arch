@@ -1,16 +1,29 @@
 return {
   'neovim/nvim-lspconfig',
-  dependencies = { 'saghen/blink.cmp' },
+  dependencies = {
+    'saghen/blink.cmp',
+  },
   config = function()
     local capabilities = require('blink.cmp').get_lsp_capabilities()
     local lspconfig = require('lspconfig')
 
     lspconfig.lua_ls.setup({ capabilities = capabilities })
+    lspconfig.cssls.setup({ capabilities = capabilities })
     lspconfig.zls.setup({ capabilities = capabilities })
     lspconfig.terraformls.setup({ capabilities = capabilities })
     lspconfig.jsonls.setup({ capabilities = capabilities })
     lspconfig.gopls.setup({ capabilities = capabilities })
     lspconfig.helm_ls.setup({ capabilities = capabilities })
+    lspconfig.eslint.setup({ capabilities = capabilities })
+
+    lspconfig.denols.setup({
+      capabilities = capabilities,
+      init_options = {
+        lint = true,
+        unstable = true,
+      },
+      root_dir = require 'lspconfig'.util.root_pattern("deno.json", "deno.jsonc"),
+    })
 
     lspconfig.yamlls.setup({
       capabilities = capabilities,
@@ -28,13 +41,13 @@ return {
       },
     })
 
-    lspconfig.ts_ls.setup({
-      capabilities = capabilities,
-      init_options = {
-        preferences = {
-          disableSuggestions = true }
-      }
-    })
+    -- lspconfig.ts_ls.setup({
+    --   capabilities = capabilities,
+    --   init_options = {
+    --     preferences = {
+    --       disableSuggestions = true }
+    --   }
+    -- })
 
     lspconfig.eslint.setup({
       capabilities = capabilities

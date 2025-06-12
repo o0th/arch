@@ -12,6 +12,9 @@ return {
 
     local telescope = require('telescope')
     telescope.setup({
+      defaults = {
+        file_ignore_patterns = { "%.git/", "node_modules/" }
+      },
       pickers = {
         find_files = { theme = 'ivy', hidden = true, no_ignore = true },
         git_files = { theme = 'ivy' },

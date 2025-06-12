@@ -4,7 +4,10 @@ return {
     local treesitter = require('nvim-treesitter.configs')
     treesitter.setup({
       ensure_installed = { 'lua', 'vim', 'vimdoc', 'markdown', 'markdown_inline' },
-      highlight = { enable = true },
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
     })
   end,
 }

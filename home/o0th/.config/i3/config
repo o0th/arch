@@ -23,9 +23,8 @@ workspace_layout default
 # fake-outputs               #
 ##############################
 
-# fake-outputs 1600x1440+0+0,1920x1440+1600+0,1600x1440+3520+0
-# fake-outputs 1280x1440+0+0,2560x1440+1280+0,1280x1440+3840+0
-#
+# fake-outputs 1600x1440+0+0,1920x1080+1600+180,1600x1440+3520+0
+
 # workspace 8 output fake-0
 # workspace $ws1 output fake-1
 # workspace 9 output fake-2
